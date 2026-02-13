@@ -1,0 +1,65 @@
+<div class="bg-white p-4 rounded-lg shadow-md min-h-full">
+    <form
+        method="POST"
+        class="max-w-2xl md:max-w-xl mx-auto bg-white p-2 rounded-2xl h-full mt-8"
+    >
+        {% for field, error_data in errors.items() %}
+        <div
+            class="mb-4 text-sm text-center p-3 rounded {% if category == 'success' %}bg-green-100 text-green-700{% endif %} {% if error_data.category == 'danger' %}bg-red-100 text-red-700{% endif %}"
+        >
+            {{ error_data.message }}
+        </div>
+        {% endfor %}
+        {{ form.hidden_tag() }}
+
+        <!-- Titre -->
+        <div class="mb-4">
+            {{ form.username.label(class="block font-medium") }} {{
+            form.username(placeholder="Nom d'utilisateur", class="w-full px-4
+            py-2 border rounded-lg focus:ring-2 focus:ring-blue-600
+            focus:outline-none", id="username") }}
+        </div>
+
+        <!-- Description -->
+        <div class="mb-4">
+            {{ form.name.label(class="block font-medium") }} {{ form.name(
+            placeholder="Prénom de l'utilisateur", class="w-full px-4 py-2
+            border rounded-lg focus:ring-2 focus:ring-blue-500
+            focus:outline-none", id="name") }}
+        </div>
+
+        <div class="mb-4">
+            {{ form.surname.label(class="block font-medium") }} {{
+            form.surname(placeholder="Nom de l'utilisateur", class="w-full px-4
+            py-2 border rounded-lg focus:ring-2 focus:ring-blue-500
+            focus:outline-none", id="surname") }}
+        </div>
+
+        <div class="mb-4">
+            {{ form.email.label(class="block font-medium") }} {{
+            form.email(placeholder="Email de l'utilisateur", class="w-full px-4
+            py-2 border rounded-lg focus:ring-2 focus:ring-blue-500
+            focus:outline-none", id="email") }}
+        </div>
+
+        <div class="mb-4">
+            {{ form.password.label(class="block font-medium") }} {{
+            form.password(placeholder="Mot de passe de l'utilisateur",
+            class="w-full px-4 py-2 border rounded-lg focus:ring-2
+            focus:ring-blue-500 focus:outline-none", id="password", ) }}
+        </div>
+
+        <div class="mb-4">
+            {{ form.confirm_password.label(class="block font-medium") }} {{
+            form.confirm_password(class="w-full px-4 py-2 border rounded-lg
+            focus:ring-2 focus:ring-blue-500 focus:outline-none",
+            placeholder="Confirmer le mot de passe de l'utilisateur",
+            id="confirm_password") }}
+        </div>
+
+        {{form.submit(class="w-full bg-blue-600 cursor-pointer hover:bg-blue-700
+        text-white font-semibold py-2 rounded-lg transition mt-6",
+        id="submit")}}
+    </form>
+    <script src="{{ url_for('static', filename='js/users/users.js') }}"></script>
+</div>

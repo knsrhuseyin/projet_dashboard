@@ -1,0 +1,90 @@
+<div class="bg-white p-4 rounded-lg shadow-md min-h-full">
+
+    <form
+        method="POST"
+        class="max-w-2xl md:max-w-xl mx-auto bg-white p-2 rounded-2xl h-full mt-8"
+    >
+        {{ form.hidden_tag() }}
+
+        <!-- Titre -->
+        <div class="mb-4">
+            {{ form.title.label(class="block font-medium") }} {{
+            form.title(class="w-full px-4 py-2 border rounded-lg focus:ring-2
+            focus:ring-blue-600 focus:outline-none", placeholder="Titre de l'article", id="title") }}
+        </div>
+
+        <!-- Description -->
+        <div class="mb-4">
+            {{ form.description.label(class="block font-medium") }} {{
+            form.description(class="w-full px-4 py-2 border rounded-lg
+            focus:ring-2 focus:ring-blue-500 focus:outline-none",
+            placeholder="Description de l'article", rows=5, id="description") }}
+        </div>
+
+        <div class="mb-4">
+            {{ form.content.label(class="block font-medium") }} {{
+            form.content(class="w-full px-4 py-2 border rounded-lg
+            focus:ring-2 focus:ring-blue-500 focus:outline-none",
+            placeholder="Contenu de l'article - Mardown utilisable !", rows=5, id="content") }}
+        </div>
+
+        <!-- TAG SYSTEM -->
+        <div class="space-y-2">
+            <!-- Dropdown -->
+            <div class="relative">
+                <div class="">
+                    <button
+                        type="button"
+                        id="dropdownBtn"
+                        class="w-full border rounded p-2 bg-white flex justify-between"
+                    >
+                        Ajouter des tags
+                        <i class="mdi mdi-chevron-up text-md"></i>
+                    </button>
+                </div>
+                <div
+                    id="dropdown"
+                    class="hidden absolute bottom-full bg-white border rounded shadow"
+                >
+                    <!-- Tags list -->
+                    <div id="tagList" class="max-h-40 overflow-y-auto">
+                        <input type="hidden" name="tags_json" id="tagsJson" />
+                        {% for label in form.tags.choices %}
+                        <button
+                            type="button"
+                            class="tag-option w-full text-left px-3 py-2 hover:bg-gray-100"
+                            data-label="{{ label }}"
+                        >
+                            {{ label }}
+                        </button>
+                        {% endfor %}
+                    </div>
+
+                    <!-- New tag -->
+                    <div class="border-t p-2 flex gap-2">
+                        {{ form.new_tag( class="flex-1 border rounded p-2",
+                        placeholder="➕ Nouveau tag" ) }}
+                        <button
+                            type="button"
+                            id="addNewTagBtn"
+                            class="bg-blue-600 text-white px-3 rounded hover:bg-blue-700"
+                        >
+                            Ajouter
+                        </button>
+                    </div>
+                </div>
+                <!-- Chips -->
+                <div id="chips" class="flex flex-wrap gap-2 mt-3"></div>
+            </div>
+
+            <!-- Hidden WTForms field -->
+            {{ form.tags(class="hidden", id="tagsField") }}
+        </div>
+
+        {{form.submit(class="w-full bg-blue-600 cursor-pointer hover:bg-blue-700
+        text-white font-semibold py-2 rounded-lg transition mt-6",
+        id="submit")}}
+    </form>
+    <script src="{{ url_for('static', filename='js/article/add_article.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/article/article.js') }}"></script>
+</div>

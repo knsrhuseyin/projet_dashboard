@@ -1,0 +1,5 @@
+{% from "components/dev_components/button.html" import link_button %}
+<div class="flex flex-col text-center gap-3">
+    {{link_button("Reset Article DB", url_for('admin_root.dev_bp_root.delete_article_db'))}}
+    {{link_button("Reset Tags DB", url_for('admin_root.dev_bp_root.delete_tags_db'))}}
+</div>

@@ -1,0 +1,11 @@
+{% extends "public/components/base.html" %} 
+
+{% block title %}
+Actualités - Lycée Baudelaire
+{% endblock %} 
+
+{% block main %} 
+{% with articles=articles %} 
+{% include "public/utils/articles_view.html"%} 
+{% endwith %} 
+{% endblock %}

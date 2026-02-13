@@ -1,0 +1,76 @@
+{% from "components/public_components/tag_card.html" import tag_card %}
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/table.css') }}"
+/>
+
+<div class="bg-white table-perso p-4 rounded-lg shadow-md h-full">
+    <!-- <a
+        href="/admin/article/add_article"
+        class="mt-4 bg-blue-500 text-white p-2 rounded-xl cursor-pointer hover:bg-blue-600"
+        >Ajouter un article</a
+    > -->
+    <div
+        class="scrollable-table max-h-full w-full border-2 rounded-2xl border-blue-400"
+    >
+        {% with description = "hidden md:table-cell", tags = "hidden
+        lg:table-cell", author = "", date = "hidden lg:table-cell", title = "",
+        id = "hidden sm:table-cell" %}
+        <table class="max-h-full min-w-full">
+            <thead class="sticky top-0 z-10 shadow-md text-center bg-blue-600 text-white">
+                <tr>
+                    <th scope="col">Slug</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col" class="{{description}}">Description</th>
+                    <th scope="col" class="{{tags}}">Tags</th>
+                    <th scope="col" class="{{author}}">Auteur</th>
+                    <th scope="col" class="{{date}}">Date de création</th>
+                    <th scope="col" class="">Action</th>
+                </tr>
+            </thead>
+            <tbody class="">
+                {% for article, author_name in articles %}
+                <tr class="">
+                    <th scope="row" id="slug">{{ article.slug }}</th>
+                    <td scope="row" id="titre">{{ article.title }}</td>
+                    <td
+                        scope="row"
+                        id="description"
+                        class="{{description}}"
+                    >
+                        <p class="max-w-sm whitespace-normal max-h-sm truncate">{{ article.description }}</p>
+                    </td>
+                    <td scope="row" id="tags" class="{{tags}}">
+                        <div class="flex flex-wrap gap-1">
+                            {% for tag in article.tags %}
+                            {{tag_card(tag)}}
+                            {% endfor %}
+                        </div>
+                    </td>
+                    <td scope="row" id="auteur" class="{{auteur}}">
+                        {{author_name}}
+                    </td>
+                    <td scope="row" id="date" class="{{date}}">
+                        {{article.created_at.strftime('%d/%m/%Y')}}
+                    </td>
+                    <td scope="row" class="text-center">
+                        <a href="/admin/article/edit/{{ article.slug }}">
+                            <i class="mdi mdi-square-edit-outline text-2xl"></i>
+                        </a>
+                        <!-- <form action="/admin/article/delete/{{article.id}}" method="POST">
+                            <button type="submit">
+                                <i class="mdi mdi-delete text-2xl"></i>
+                            </button>
+                        </form> -->
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+        {% endwith %}
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/article/article.js') }}"></script>

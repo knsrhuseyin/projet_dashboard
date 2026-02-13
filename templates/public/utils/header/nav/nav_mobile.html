@@ -1,0 +1,29 @@
+<!-- MENU MOBILE -->
+<nav id="mobileMenu" class="hidden lg:hidden bg-blue-700">
+    {% with style="block px-4 py-2 hover:bg-blue-600" %} 
+        {% include "public/utils/header/nav/navigation.html" %} 
+    {% endwith %}
+
+    <!-- Accès rapides dropdown mobile -->
+    <div class="relative">
+        <button
+            id="quickAccessBtnMobile"
+            class="w-full text-left px-4 py-2 hover:bg-blue-600 flex justify-between items-center"
+        >
+            Accès rapides
+            <span
+                id="quickAccessArrowMobile"
+                class="text-xs transition-transform duration-300"
+                >▼</span
+            >
+        </button>
+        <div id="quickAccessDropdownMobile" class="hidden bg-blue-600">
+            <a href="#" class="block px-6 py-2 hover:bg-blue-500">ENT</a>
+            <a href="#" class="block px-6 py-2 hover:bg-blue-500">Pronote</a>
+            <a href="#" class="block px-6 py-2 hover:bg-blue-500">Calendrier</a>
+            <a href="#" class="block px-6 py-2 hover:bg-blue-500"
+                >Menus cantine</a
+            >
+        </div>
+    </div>
+</nav>

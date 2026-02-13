@@ -1,0 +1,44 @@
+{% macro side_bar_link_button(button_style, active_class, href, icon, text) %}
+<a class="{{button_style}} {{active_class}}" href="{{href}}">
+    <i class="mdi {{icon}} text-2xl"></i>
+    <h1 class="text-md">{{text}}</h1>
+</a>
+{% endmacro %} 
+{% macro dropdown_button(
+    name,
+    button_style,
+    active_class, 
+    id_btn,
+    id_arrow,
+    id_content,
+    items,
+    icon
+) 
+%}
+<div>
+    <button class="{{button_style}} {{active_class}} w-full" id="{{id_btn}}">
+        <i class="mdi {{icon}} text-2xl"></i>
+        <div class="flex items-center justify-between w-full">
+            <h1 class="text-md">{{name}}</h1>
+            <span
+                id="{{id_arrow}}"
+                class="rotate-360 text-xl transition-transform duration-150"
+            >
+                <i class="mdi mdi-chevron-down text-md"></i>
+            </span>
+        </div>
+    </button>
+    <div
+        class="overflow-hidden max-h-0 bg-blue-700 bg-blue-700 transition-all duration-150 flex flex-col p-0 rounded-b-2xl"
+        id="{{id_content}}"
+    >
+    {% for item in items %}
+        <a
+            href="{{item.url}}"
+            class="{{item.active_class}} p-1 transition duration-100 hover:text-cyan-500"
+            >{{item.text}}</a
+        >
+    {% endfor %}
+    </div>
+</div>
+{% endmacro %}

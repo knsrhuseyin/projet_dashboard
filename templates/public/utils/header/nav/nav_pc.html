@@ -1,0 +1,31 @@
+<nav class="hidden lg:flex gap-6 text-sm font-medium items-center">
+    {% with style="hover:underline" %} 
+        {% include "public/utils/header/nav/navigation.html" %} 
+    {% endwith %}
+
+    <!-- Accès rapides stylé -->
+    <div class="relative" id="quickAccessMenu">
+        <button
+            id="quickAccessBtn"
+            class="flex items-center gap-1 bg-blue-700 px-3 py-1 rounded text-white"
+        >
+            Accès rapides
+            <span
+                id="quickAccessArrow"
+                class="text-xs transition-transform duration-300"
+                >▼</span
+            >
+        </button>
+        <div
+            id="quickAccessDropdown"
+            class="absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg opacity-0 invisible transform -translate-y-2 transition-all duration-300 z-50"
+        >
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">ENT</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Pronote</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Calendrier</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+                >Menus cantine</a
+            >
+        </div>
+    </div>
+</nav>

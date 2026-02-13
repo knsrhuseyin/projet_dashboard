@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Tailwind CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css"
+        />
+    </head>
+    <body class="min-h-screen bg-gray-100 text-gray-800 pt-14">
+        {% include "public/utils/header/header.html" %} {% block body %}{%
+        endblock %}
+
+        <!-- CONTENU PRINCIPAL -->
+        <main class="min-h-screen max-w-7xl mx-auto px-4 py-10 grid gap-6">
+            {% block main %}{% endblock %}
+        </main>
+
+        {% include "public/utils/footer/footer.html" %}
+    </body>
+    <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scroll.js') }}"></script>
+    
+</html>

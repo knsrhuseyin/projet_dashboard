@@ -1,0 +1,15 @@
+{% extends "admin/templates/base/base_content.html" %}
+
+{% block side_bar %} {% include "admin/templates/side_bar.html" %}{% endblock %}
+
+{% block content %} 
+{% include "admin/templates/components/content_components/content.html" %} 
+{% endblock %} 
+
+{% block other %} 
+{% include "admin/content/articles/utils/modals.html" %} 
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/side_bar.js') }}"></script>
+{% endblock %}

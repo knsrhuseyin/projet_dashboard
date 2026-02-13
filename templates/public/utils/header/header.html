@@ -1,0 +1,41 @@
+<header
+    id="navbar"
+    class="bg-blue-800 text-white fixed top-0 left-0 w-full z-50 transition-transform duration-300"
+>
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+        <!-- Logo + Nom -->
+        <div class="flex items-center gap-3">
+            <div
+                class="w-10 h-10 bg-white text-blue-800 flex items-center justify-center font-bold rounded"
+            >
+                L
+            </div>
+            <span class="text-lg font-semibold">Lycée Exemple</span>
+        </div>
+
+        <!-- MENU PC -->
+        {% include "public/utils/header/nav/nav_pc.html" %}
+
+        <!-- MENU BURGER -->
+        <div class="lg:hidden">
+            <button id="burgerBtn" class="focus:outline-none">
+                <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"
+                    ></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    {% include "public/utils/header/nav/nav_mobile.html" %}
+</header>

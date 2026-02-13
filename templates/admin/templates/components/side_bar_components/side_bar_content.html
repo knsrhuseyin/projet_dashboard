@@ -1,0 +1,48 @@
+{% from "components/side_bar_components/side_bar_button.html" import side_bar_link_button, dropdown_button %} {% with button_style="flex gap-4 items-center p-4
+text-gray-400 rounded-xl transition-all duration-400 hover:bg-blue-600
+hover:text-white mt-3 cursor-pointer" %}
+<div class="h-full">
+    {{ side_bar_link_button( button_style, dashboard, "/admin/dashboard",
+    "mdi-view-dashboard-outline", "Dashboard" ) }}
+
+    {{dropdown_button(
+        "Article",
+        button_style,
+        article,
+        "articleBtn",
+        "articleBtnArrow",
+        "articleContent",
+        [{
+            "url": "/admin/article",
+            "active_class": article_content,
+            "text": "Articles"
+        },
+        {
+            "url": "/admin/article/add_article",
+            "active_class": add_article_content,
+            "text": "Ajouter un article"
+        }],
+        "mdi-view-dashboard-edit"
+    )}}
+
+    {{dropdown_button(
+        "Users",
+        button_style,
+        users,
+        "usersBtn",
+        "usersBtnArrow",
+        "usersContent",
+        [{
+            "url": "/admin/user",
+            "active_class": users_content,
+            "text": "Users"
+        },
+        {
+            "url": "/admin/user/add_user",
+            "active_class": add_users_content,
+            "text": "Ajouter un user"
+        }],
+        "mdi-account-edit-outline"
+    )}}
+</div>
+{% endwith %}

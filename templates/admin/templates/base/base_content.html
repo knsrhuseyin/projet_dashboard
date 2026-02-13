@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css"
+        />
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100 text-gray-800">
+        <div class="min-h-screen max-h-screen w-full flex flex-row">
+            {% block side_bar %}{% endblock %}
+
+            <!-- Page Content -->
+            {% block content %}{% endblock %}
+        </div>
+        {% block other %}{% endblock %}
+    </body>
+    {% block script %}{% endblock %}
+</html>

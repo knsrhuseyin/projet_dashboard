@@ -1,0 +1,65 @@
+{% from "components/public_components/tag_card.html" import tag_card %}
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/table.css') }}"
+/>
+
+<div class="bg-white table-perso p-4 rounded-lg shadow-md h-full">
+    <!-- <a
+        href="/admin/article/add_article"
+        class="mt-4 bg-blue-500 text-white p-2 rounded-xl cursor-pointer hover:bg-blue-600"
+        >Ajouter un article</a
+    > -->
+    <div
+        class="scrollable-table max-h-full w-full border-2 rounded-2xl border-blue-400"
+    >
+        {% with description = "hidden md:table-cell", tags = "hidden
+        lg:table-cell", author = "", date = "hidden lg:table-cell", title = "",
+        id = "hidden sm:table-cell" %}
+        <table class="max-h-full min-w-full">
+            <thead class="sticky top-0 z-10 shadow-md text-center bg-blue-600 text-white">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Pseudo</th>
+                    <th scope="col" class="{{description}}">Nom</th>
+                    <th scope="col" class="{{tags}}">Prénom</th>
+                    <th scope="col" class="{{author}}">Email</th>
+                    <th scope="col" class="{{date}}">Mot de passe</th>
+                    <th scope="col" class="">Modifier</th>
+                </tr>
+            </thead>
+            <tbody class="">
+                {% for user in users_data %}
+                <tr class="">
+                    <th scope="row" id="slug">{{ user.id }}</th>
+                    <td scope="row" id="titre">{{ user.username }}</td>
+                    <td
+                        scope="row"
+                        id="description"
+                        class="{{description}}"
+                    >
+                        <p class="max-w-sm whitespace-normal max-h-sm truncate">{{ user.surname }}</p>
+                    </td>
+                    <td scope="row" id="tags" class="{{tags}}">{{ user.name }}</td>
+                    <td scope="row" id="auteur" class="{{auteur}}">
+                        {{user.email}}
+                    </td>
+                    <td scope="row" id="date" class="{{date}}">
+                        ******
+                    </td>
+                    <td scope="row" class="text-center">
+                        <a href="">
+                            <i class="mdi mdi-square-edit-outline text-2xl"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+        {% endwith %}
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/users/users.js') }}"></script>

@@ -1,0 +1,11 @@
+{% macro link_button(text, onclick, bg_class, hover_class, extra_class) %}
+<a
+    class="px-4 py-2 rounded-lg font-medium text-white transition
+           {{ bg_class|default('bg-blue-600') }}
+           {{ hover_class|default('hover:bg-blue-500') }}
+           {{ extra_class|default('') }}"
+    {% if onclick %} href="{{ onclick }}" {% endif %}
+>
+    {{ text }}
+</a>
+{% endmacro %}

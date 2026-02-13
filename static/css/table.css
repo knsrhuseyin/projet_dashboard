@@ -1,0 +1,45 @@
+td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.441);
+    border-left: 1px solid rgba(128, 128, 128, 0.356);
+    max-height: 50px;
+    overflow-x: auto;
+}
+
+th {
+    padding: 10px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.441);
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(128, 128, 128, 0.11); /* vert */
+}
+
+.scrollable-table {
+  overflow-x: auto;
+  overflow-y: auto;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #aeaeae transparent;
+}
+
+/* Chrome, Edge, Safari */
+.scrollable-table::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollable-table::-webkit-scrollbar-track {
+  background: transparent; /* pas de track visible */
+}
+
+.scrollable-table::-webkit-scrollbar-thumb {
+  background-color: #636363; /* couleur du scroll */
+  border-radius: 4px;
+}
+
+/* Optionnel : supprimer les coins du scrollbar pour le scroll horizontal + vertical */
+.scrollable-table::-webkit-scrollbar-corner {
+  background: transparent;
+}
