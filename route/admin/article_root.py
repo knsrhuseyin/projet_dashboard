@@ -12,6 +12,20 @@ admin_page = "admin/admin_page.html"
 @article_root_bp.route("/")
 @login_required
 def article_page():
+    """SELECT
+    a.id,
+    a.title,
+    a.slug,
+    a.description,
+    a.content,
+    a.created_at,
+    a.updated_at,
+    u.id AS author_id,
+    u.username
+    FROM article a
+    JOIN "user" u ON u.id = a.author_id
+    ORDER BY a.created_at DESC;
+    """
     articles = get_all_article(db)
     print(articles)
     return render_template(admin_page,
@@ -26,6 +40,24 @@ def article_page():
 @article_root_bp.route("/add_article", methods=["GET", "POST"])
 @login_required
 def add_article():
+    """
+    INSERT INTO article (
+        title,
+        slug,
+        description,
+        content,
+        author_id,
+        created_at
+    )
+    VALUES (
+        :title,
+        :slug,
+        :description,
+        :content,
+        :author_id,
+        NOW()
+    )
+    """
     form = ArticleForm()
 
     form.tags.choices = [t.name for t in Tag.query.order_by(Tag.name).all()]
@@ -47,6 +79,15 @@ def add_article():
 @article_root_bp.route("/edit/<string:slug>", methods=["GET", "POST"])
 @login_required
 def modify_article(slug: str):
+    """
+    UPDATE article
+    SET
+        title = :title,
+        description = :description,
+        content = :content,
+        updated_at = NOW()
+    WHERE id = :article_id;
+    """
     form = ArticleForm()
 
     form.tags.choices = [t.name for t in Tag.query.order_by(Tag.name).all()]
@@ -80,5 +121,9 @@ def modify_article(slug: str):
 @article_root_bp.post("/delete/<string:slug>")
 @login_required
 def delete_article(slug: str):
+    """
+    DELETE FROM article_tag
+    WHERE article_id = :article_id;
+    """
     delete_article_by_id(slug, db)
     return redirect("/admin/article")
