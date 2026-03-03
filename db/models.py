@@ -11,8 +11,7 @@ article (
 );
 
 tag (
-    id SERIAL PRIMARY KEY,
-    name TEXT UNIQUE NOT NULL
+    name TEXT NOT NULL PRIMARY KEY,
 );
 
 article_tag (
