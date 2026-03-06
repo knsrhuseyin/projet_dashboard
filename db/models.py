@@ -1,3 +1,27 @@
+"""
+article (
+    id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL,
+    slug TEXT UNIQUE NOT NULL,
+    description TEXT,
+    content TEXT,
+    author_id INTEGER REFERENCES "user"(id),
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+);
+
+tag (
+    name TEXT NOT NULL PRIMARY KEY,
+);
+
+article_tag (
+    article_id INTEGER REFERENCES article(id),
+    tag_id INTEGER REFERENCES tag(id),
+    PRIMARY KEY (article_id, tag_id)
+);
+"""
+
+
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 from datetime import datetime
