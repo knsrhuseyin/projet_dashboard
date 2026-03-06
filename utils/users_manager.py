@@ -14,3 +14,6 @@ def create_user(username, name, surname, email, password):
 
 def get_all_users():
     return User.query.all()
+
+def get_user_number():
+    return User.query.count()

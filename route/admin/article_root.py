@@ -13,7 +13,6 @@ admin_page = "admin/admin_page.html"
 @login_required
 def article_page():
     articles = get_all_article(db)
-    print(articles)
     return render_template(admin_page,
                            page="admin/content/articles/articles.html",
                            article="bg-blue-500 text-white rounded-b-none",

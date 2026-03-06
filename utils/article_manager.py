@@ -9,7 +9,8 @@ from utils.tags_manager import add_tag, get_page_tags
 from utils.utils import generate_unique_slug
 
 def delete_article_by_id(slug: str, db) -> bool:
-    article = db.session.get(Article, slug)
+    article = Article.query.filter_by(slug=slug).first()
+    print(article)
     if article:
         db.session.delete(article)
         db.session.commit()
